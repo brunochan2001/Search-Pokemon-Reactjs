@@ -1,5 +1,6 @@
 export {
   onPokemonFail,
   onPokemonSuccess,
-  onPokemonLoading
+  onPokemonLoading,
+  onClearMsg
 } from './pokemonAction';

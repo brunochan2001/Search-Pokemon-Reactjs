@@ -11,9 +11,6 @@
   display: flex;
   justify-content: center;
 }
-.pokemon-content__image {
-  width: 100%;
-}
 .pokemon-action {
   display: flex;
   padding: 0;

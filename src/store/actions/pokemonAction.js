@@ -1,4 +1,5 @@
 import {
+  CLEAR_MSG_ERROR,
   GET_POKEMON_FAIL,
   GET_POKEMON_LOADING,
   GET_POKEMON_SUCCESS
@@ -16,8 +17,14 @@ export const onPokemonSuccess = data => {
   };
 };
 
-export const onPokemonFail = () => {
+export const onPokemonFail = data => {
   return async dispatch => {
-    dispatch({ type: GET_POKEMON_FAIL });
+    dispatch({ type: GET_POKEMON_FAIL, payload: data });
+  };
+};
+
+export const onClearMsg = () => {
+  return async dispatch => {
+    dispatch({ type: CLEAR_MSG_ERROR });
   };
 };

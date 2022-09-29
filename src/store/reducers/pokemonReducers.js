@@ -1,4 +1,5 @@
 import {
+  CLEAR_MSG_ERROR,
   GET_POKEMON_FAIL,
   GET_POKEMON_LOADING,
   GET_POKEMON_SUCCESS
@@ -8,6 +9,7 @@ const initalState = {
   isLoading: false,
   pokemon: [],
   msg: ''
+  // pokemonActive: [pokemonLocalStorage]
 };
 
 const pokemonReducers = (state = initalState, action) => {
@@ -23,7 +25,12 @@ const pokemonReducers = (state = initalState, action) => {
         ...state,
         isLoading: false,
         pokemon: [],
-        msg: 'No se encontro el Pokemon'
+        msg: payload
+      };
+    case CLEAR_MSG_ERROR:
+      return {
+        ...state,
+        msg: ''
       };
 
     default:
