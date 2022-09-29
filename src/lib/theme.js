@@ -2,17 +2,6 @@
 
 import { createTheme, responsiveFontSizes } from '@mui/material';
 
-const options = {
-  typography: {
-    fontFamily: 'Poppins',
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    button: {
-      textTransform: 'none'
-    }
-  }
-};
+const options = {};
 
 export const theme = responsiveFontSizes(createTheme(options));
