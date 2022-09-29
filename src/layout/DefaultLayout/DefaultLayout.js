@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { AppBar, Box, Toolbar, Typography, IconButton } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  Container
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Navigation } from '../../components';
@@ -33,7 +40,9 @@ const DefaultLayout = ({ children }) => {
           </Toolbar>
         </AppBar>
       </Box>
-      <div>{children}</div>
+      <Container style={{ marginTop: '2rem' }}>
+        <div>{children}</div>
+      </Container>
     </>
   );
 };
