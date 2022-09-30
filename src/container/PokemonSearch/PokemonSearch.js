@@ -16,7 +16,7 @@ const PokemonSearch = () => {
 
   useDebounce(
     () => {
-      startSearchPokemon(val);
+      startSearchPokemon(val.toLocaleLowerCase());
     },
     400,
     [val]
