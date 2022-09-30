@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Search Pokemon App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React app showing searched pokemon and a CRUD of registered pokemon
 
-## Available Scripts
+The application was implemented with vercel and can be visited [Click](https://search-pokemon-reactjs.vercel.app/).
 
-In the project directory, you can run:
+[![Pokemon-App-Reactjs](https://i.postimg.cc/TwV6Xcb2/20220930-002553.gif)](https://i.postimg.cc/TwV6Xcb2/20220930-002553.gif)
 
-### `npm start`
+## Some Development Notes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Task organization
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I decided to organize my (initial) tasks into a [to-do] list](https://github.com/brunochan2001/Search-Pokemon-Reactjs/issues/1) .
 
-### `npm test`
+Initial commits have a "task ID" before the descriptive message to make it easier to understand future code changes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The task IDs are from the to-do list (for example, [i-1] for the base configuration)
 
-### `npm run build`
+### Library Decisions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- For the technology I use CRA because I can configure my repository quickly
+- For the design use material-ui because it has ready components, fast and easy to use
+- For the tests use only Jest, I only did unit tests for the moment
+- Install react-use to use useDebounce() , because it limits the api call to a certain fraction of time so we will not have unnecessary api calls and it improves the performance of the application
+- For the animations use animate.css because it is easy to use, they can be easily improved and maintained
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Additional Thoughts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- All requirements have been met
+- Reports for the amount of data was not very clear, so I took the liberty of making a CRUD of reports of the pokemons that we registered uses the Firebase service as a backend
 
-### `npm run eject`
+## How to run locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Clone repository
+- Install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm i
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Run a dev environment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+npm start
+```
 
-## Learn More
+- Run tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm run test
+```
