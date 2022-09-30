@@ -2,7 +2,8 @@ import {
   CLEAR_MSG_ERROR,
   GET_POKEMON_FAIL,
   GET_POKEMON_LOADING,
-  GET_POKEMON_SUCCESS
+  GET_POKEMON_SUCCESS,
+  LOAD_POKEMON_FIREBASE
 } from '../actionTypes';
 
 export const onPokemonLoading = () => {
@@ -26,5 +27,11 @@ export const onPokemonFail = data => {
 export const onClearMsg = () => {
   return async dispatch => {
     dispatch({ type: CLEAR_MSG_ERROR });
+  };
+};
+
+export const onSetPokemon = data => {
+  return async dispatch => {
+    dispatch({ type: LOAD_POKEMON_FIREBASE, payload: data });
   };
 };

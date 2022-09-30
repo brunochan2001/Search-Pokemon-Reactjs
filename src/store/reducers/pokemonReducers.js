@@ -9,7 +9,6 @@ const initalState = {
   isLoading: false,
   pokemon: [],
   msg: ''
-  // pokemonActive: [pokemonLocalStorage]
 };
 
 const pokemonReducers = (state = initalState, action) => {

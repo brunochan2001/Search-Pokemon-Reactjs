@@ -1,8 +1,13 @@
 import React from 'react';
+import { ReportPokemon } from '../container';
 import { DefaultLayout } from '../layout';
 
 const ReportPage = () => {
-  return <DefaultLayout>Report</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <ReportPokemon />
+    </DefaultLayout>
+  );
 };
 
 export default ReportPage;
