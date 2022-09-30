@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button, Pagination, Stack, Typography } from '@mui/material';
-
+import 'jspdf-autotable';
+const { jsPDF } = require('jspdf');
 const TableList = ({
   pokemon,
   setOpen,
@@ -38,6 +40,16 @@ const TableList = ({
     setData(
       pokemon.slice(firstIndex + pageSize * (value - 1), pageSize * value)
     );
+  };
+  const dowloadPdf = pokemon => {
+    const doc = new jsPDF();
+    doc.text('Pokemon Detalles', 20, 10);
+    doc.autoTable({
+      columns: ['Pokemon', 'Experiencia', 'Estado'],
+      body: [[pokemon.name, pokemon.experiencia, pokemon.status]]
+    });
+
+    doc.save('pokemon.pdf');
   };
 
   return (
@@ -80,6 +92,14 @@ const TableList = ({
                     >
                       <Typography variant="caption" display="block">
                         Eliminar
+                      </Typography>
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={() => dowloadPdf(pokemon)}
+                    >
+                      <Typography variant="caption" display="block">
+                        Pdf
                       </Typography>
                     </Button>
                   </Stack>
