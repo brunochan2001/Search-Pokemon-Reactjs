@@ -6,6 +6,7 @@
 .card {
   margin-top: 2rem;
   min-width: 250px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 50%) !important;
 }
 .pokemon-content {
   display: flex;

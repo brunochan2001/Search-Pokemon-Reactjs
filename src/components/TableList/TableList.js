@@ -41,7 +41,7 @@ const TableList = ({
   };
 
   return (
-    <>
+    <div className="animate__animated animate__backInLeft">
       <Stack direction="row" spacing={2} justifyContent="end" mb={2} mt={2}>
         <Button variant="contained" onClick={() => downloadExcel()}>
           <Typography variant="caption" display="block">
@@ -98,7 +98,7 @@ const TableList = ({
           className="pagination"
         />
       </div>
-    </>
+    </div>
   );
 };
 
