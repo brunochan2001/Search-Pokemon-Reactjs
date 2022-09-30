@@ -31,6 +31,8 @@ const CustomModal = ({ open, setOpen, startNewPokemon }) => {
   const onSubmit = e => {
     e.preventDefault();
     startNewPokemon(form);
+    setOpen(false);
+    setForm(initialForm);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Pagination, Stack, Typography } from '@mui/material';
 
 const TableList = ({
   pokemon,
@@ -14,9 +14,35 @@ const TableList = ({
   downloadExcel,
   startDeletingPokemon
 }) => {
+  const firstIndex = 0;
+  const pageSize = 4;
+  const [pokemonData, setPokemonData] = useState(pokemon);
+
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState(pokemonData.slice(firstIndex, pageSize));
+
+  useEffect(() => {
+    setPokemonData(pokemon);
+  }, [pokemon]);
+
+  useEffect(() => {
+    setData(pokemonData.slice(firstIndex, pageSize));
+  }, [pokemonData]);
+
+  useEffect(() => {
+    setData(pokemonData.slice(0, pageSize));
+  }, [pageSize]);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+    setData(
+      pokemon.slice(firstIndex + pageSize * (value - 1), pageSize * value)
+    );
+  };
+
   return (
     <>
-      <Stack direction="row" spacing={2} justifyContent="end" mb={2}>
+      <Stack direction="row" spacing={2} justifyContent="end" mb={2} mt={2}>
         <Button variant="contained" onClick={() => downloadExcel()}>
           <Typography variant="caption" display="block">
             Exportar Excel
@@ -39,7 +65,7 @@ const TableList = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {pokemon.map((pokemon, index) => (
+            {data.map((pokemon, index) => (
               <TableRow key={index}>
                 <TableCell component="th" scope="row">
                   {pokemon.name}
@@ -56,14 +82,6 @@ const TableList = ({
                         Eliminar
                       </Typography>
                     </Button>
-                    <Button
-                      variant="contained"
-                      onClick={() => console.log(pokemon.id)}
-                    >
-                      <Typography variant="caption" display="block">
-                        PDF
-                      </Typography>
-                    </Button>
                   </Stack>
                 </TableCell>
               </TableRow>
@@ -71,6 +89,15 @@ const TableList = ({
           </TableBody>
         </Table>
       </TableContainer>
+      <div style={{ marginTop: '20px' }}>
+        <Pagination
+          count={Math.ceil(pokemon.length / pageSize)}
+          page={page}
+          onChange={handleChange}
+          color="primary"
+          className="pagination"
+        />
+      </div>
     </>
   );
 };

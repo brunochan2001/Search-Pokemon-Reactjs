@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { CustomModal, TableList } from '../../components';
+import { CustomModal, SearchBar, TableList } from '../../components';
 import useFirebaseStore from '../../hooks/useFirebaseStore';
 import * as XLSX from 'xlsx';
 
 const ReportPokemon = () => {
-  const { startLoadPokemon, pokemon, startDeletingPokemon, startNewPokemon } =
+  const { pokemon, startLoadPokemon, startDeletingPokemon, startNewPokemon } =
     useFirebaseStore();
   const [open, setOpen] = useState(false);
+  const [val, setVal] = useState('');
+  const [dataFilter, setDataFilter] = useState([]);
 
   useEffect(() => {
     startLoadPokemon();
   }, []);
+
+  useEffect(() => {
+    filterData(val);
+  }, [val, pokemon]);
 
   const downloadExcel = () => {
     const newData = pokemon.map(note => {
@@ -24,10 +30,25 @@ const ReportPokemon = () => {
     XLSX.writeFile(workBook, 'PokemonData.xlsx');
   };
 
+  const filterData = value => {
+    const lowerCaseValue = value.toLowerCase().trim();
+    if (!lowerCaseValue) {
+      setDataFilter(pokemon);
+    } else {
+      const filteredData = pokemon.filter(item => {
+        return Object.keys(item).some(key =>
+          item[key].toString().toLowerCase().includes(lowerCaseValue)
+        );
+      });
+      setDataFilter(filteredData);
+    }
+  };
+
   return (
     <>
+      <SearchBar setVal={setVal} />
       <TableList
-        pokemon={pokemon}
+        pokemon={dataFilter}
         downloadExcel={downloadExcel}
         open={open}
         setOpen={setOpen}
