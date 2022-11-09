@@ -2,7 +2,7 @@
 
 React app showing searched pokemon and a CRUD of registered pokemon
 
-The application was implemented with vercel and can be visited [Click](https://search-pokemon-reactjs.vercel.app/).
+The application was implemented with Netlify and can be visited [Click](https://search-pokemon-reactjs.netlify.app/Reportes).
 
 [![Pokemon-App-Reactjs](https://i.postimg.cc/TwV6Xcb2/20220930-002553.gif)](https://i.postimg.cc/TwV6Xcb2/20220930-002553.gif)
 
